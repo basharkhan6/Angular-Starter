@@ -1,1 +1,8 @@
+<p-toast [style]="{marginTop: '70px'}"></p-toast>
+
+<app-nav *ngIf="showNav"></app-nav>
+<app-header *ngIf="showHeader"></app-header>
+
 <router-outlet></router-outlet>
+
+<app-footer *ngIf="showFooter"></app-footer>

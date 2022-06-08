@@ -2,17 +2,22 @@ import { NgModule } from '@angular/core';
 import {RouterModule, Routes} from "@angular/router";
 
 
-const appRoutes: Routes = [
+const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
     loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule),
-  }
+    data: { showNav: false, showHeader: false, showFooter: false }
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
+  },
+
 ];
 
 @NgModule({
   declarations: [],
-  imports: [RouterModule.forRoot(appRoutes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
