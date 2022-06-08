@@ -22,10 +22,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('angular-starter');
   });
 
-  it('should render title', () => {
+  it('should render Hello World!', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('angular-starter app is running!');
+    expect(compiled.getElementsByTagName('h1')?.item(0)?.textContent).toContain('Hello World!');
   });
 });
