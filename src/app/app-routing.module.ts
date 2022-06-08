@@ -9,6 +9,11 @@ const routes: Routes = [
     data: { showNav: false, showHeader: false, showFooter: false }
   },
   {
+    path: 'auth',
+    loadChildren: () => import('./modules/auth/auth.module').then(m => m.AuthModule),
+    data: { showNav: false, showHeader: false, showFooter: false }
+  },
+  {
     path: 'dashboard',
     loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
   },
