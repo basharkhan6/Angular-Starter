@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {ControlErrorMessageComponent} from "./components/control-error-message/control-error-message.component";
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ControlErrorMessageComponent
+  ],
+  exports: [
+    ControlErrorMessageComponent
+  ],
   imports: [
     CommonModule
   ]

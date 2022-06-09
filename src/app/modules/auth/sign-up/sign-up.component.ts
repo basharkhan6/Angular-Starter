@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {CommonValidators} from "../../../core/validators/common-validators";
 
 @Component({
   selector: 'app-sign-up',
@@ -23,15 +24,17 @@ export class SignUpComponent implements OnInit {
 
 
   private buildSignUpForm(): FormGroup {
-    return this.fb.group({
+    let group = this.fb.group({
       username: ['', Validators.required],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
-      email: ['', Validators.email],
-      password: ['', Validators.required],
-      confirm_password: ['', Validators.required],
-      phone: ['', Validators.required]
+      email: ['', [Validators.required, CommonValidators.emailValidator]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirm_password: ['', Validators.required, Validators.minLength(6)],
+      phone: ['', [Validators.required, Validators.minLength(10)]]
     });
+    group.addValidators(CommonValidators.matchPassword('password', 'confirm_password'));
+    return group;
   }
 
 }
