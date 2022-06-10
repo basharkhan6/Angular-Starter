@@ -1,7 +1,8 @@
 # Angular Starter
-This is an Angular Starter project with basic common features and test cases which is indented on learning purpose and can also be used as boilerplate project.
-Here I tries to use and implement the best practices of Angular and JavaScript.
-More information and external resources are attached in this README file.
+This is **an angular boilerplate project** with basic common features and test cases.  
+The main target of this project is to **create a highly scalable, reusable, well-architect front-end application**
+and tries to use and implement the best practices of Angular and JavaScript.  
+More information and external resources are attached in this **README.md** file.
 
 
 ## Requirements
@@ -37,6 +38,9 @@ This will start development server in port **4200**
 - Interceptor
 - Tests
 
+#### Other Features
+- Customized ToasterService by using [PrimeNG`s Toast](https://www.primefaces.org/primeng/toast)  
+*ref: app.component.html; core.module.ts(providers); usages: core -> services -> ToasterService*
 
 
 ## Architecture
@@ -95,7 +99,9 @@ Put below css reference under **styles** in *angular.json*
 "node_modules/primeng/resources/primeng.min.css",
 "node_modules/primeicons/primeicons.css",
 ```
+Import `BrowserAnimationsModule` or `NoopAnimationsModule` in AppModule
 
 
-## Reference
+## References
+- [For Architecture](https://itnext.io/choosing-a-highly-scalable-folder-structure-in-angular-d987de65ec7)
 - [For App Layout](https://indepth.dev/posts/1235/how-to-reuse-common-layouts-in-angular-using-router-2)

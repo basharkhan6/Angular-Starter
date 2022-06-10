@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {CommonValidators} from "../../../core/validators/common-validators";
-import {AuthService} from "../services/auth.service";
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {CommonValidators} from '../../../core/validators/common-validators';
+import {AuthService} from '../services/auth.service';
+import {ToasterService} from '../../../core/services/toaster.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,9 +11,12 @@ import {AuthService} from "../services/auth.service";
 })
 export class SignUpComponent implements OnInit {
 
+  public submitted: boolean = false;
   public signUpForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder,
+              private authService: AuthService,
+              private toasterService: ToasterService) {
     this.signUpForm = this.buildSignUpForm();
   }
 
@@ -20,7 +24,10 @@ export class SignUpComponent implements OnInit {
   }
 
   submitSignUpForm(): void {
-    this.authService.signUpUser(this.signUpForm);
+    this.authService.signUpUser(this.signUpForm).subscribe(
+      () => this.toasterService.success('Success', 'Sign up successful'),
+      () => this.toasterService.error('Error', 'Failed to sign up!!')
+    );
   }
 
 

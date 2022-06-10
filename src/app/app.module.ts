@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import {LayoutModule} from "./layout/layout.module";
-import {ToastModule} from "primeng/toast";
-import {CoreModule} from "./core/core.module";
-import {HttpClientModule} from "@angular/common/http";
+import { LayoutModule } from './layout/layout.module';
+import { CoreModule } from './core/core.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -14,6 +16,7 @@ import {HttpClientModule} from "@angular/common/http";
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'serverApp'}),
+    BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule,
     LayoutModule,
