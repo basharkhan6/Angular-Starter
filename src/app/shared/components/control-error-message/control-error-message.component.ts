@@ -27,7 +27,6 @@ export class ControlErrorMessageComponent implements OnInit {
     }
 
     for (let propertyName in this.control.errors) {
-      console.log('Checking for control', this.control);
       if (this.control.errors.hasOwnProperty(propertyName) && (this.control.touched || this.control.dirty || this.submitted)) {
         return this.validatorService.getValidatorErrorMessage(propertyName, this.control.errors[propertyName]);
       }

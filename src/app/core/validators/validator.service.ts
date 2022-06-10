@@ -1,9 +1,22 @@
 import { Injectable } from '@angular/core';
+import {AbstractControl} from "@angular/forms";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ValidatorService {
+
+  public static removeError(control: AbstractControl, error: string): void {
+    const err = control.errors;
+    if (err) {
+      delete err[error];
+      if (!Object.keys(err).length) {
+        control.setErrors(null);  // set null if error list is empty after removing
+      } else {
+        control.setErrors(err);
+      }
+    }
+  }
 
   public getValidatorErrorMessage(validatorName: string, validatorValue?: any): string {
     let config = {

@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {LayoutModule} from "./layout/layout.module";
 import {ToastModule} from "primeng/toast";
 import {CoreModule} from "./core/core.module";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {CoreModule} from "./core/core.module";
     AppRoutingModule,
     CoreModule,
     LayoutModule,
+    HttpClientModule,
     ToastModule
   ],
   providers: [],
