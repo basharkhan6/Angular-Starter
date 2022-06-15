@@ -11,7 +11,6 @@ import {ToasterService} from '../../../core/services/toaster.service';
 })
 export class SignUpComponent implements OnInit {
 
-  public submitted: boolean = false;
   public signUpForm: FormGroup;
 
   constructor(private fb: FormBuilder,
@@ -24,15 +23,15 @@ export class SignUpComponent implements OnInit {
   }
 
   submitSignUpForm(): void {
-    this.authService.signUpUser(this.signUpForm).subscribe(
-      () => this.toasterService.success('Success', 'Sign up successful'),
+    this.authService.signUp(this.signUpForm).subscribe(
+      () => this.toasterService.success('Success', 'Sign up successful. Please check your email.'),
       () => this.toasterService.error('Error', 'Failed to sign up!!')
     );
   }
 
 
   private buildSignUpForm(): FormGroup {
-    let group = this.fb.group({
+    const group = this.fb.group({
       username: ['', Validators.required],
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],

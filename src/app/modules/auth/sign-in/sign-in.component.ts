@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {CommonValidators} from '../../../core/validators/common-validators';
+import {AuthService} from "../services/auth.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-sign-in',
@@ -7,9 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignInComponent implements OnInit {
 
-  constructor() { }
+  public signInForm: FormGroup;
+  public redirectUrl: string = '/';
 
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder, private authService: AuthService, private route: ActivatedRoute) {
+    this.signInForm = this.buildSignInForm();
   }
 
+  ngOnInit(): void {
+    this.redirectUrl = this.route.snapshot.queryParams['redirectUrl'];
+  }
+
+  private buildSignInForm(): FormGroup {
+    return this.fb.group({
+      username: ['', Validators.required],
+      password: ['', CommonValidators.minLength(6)],
+    });
+  }
+
+  submitSignInForm(): void {
+    this.authService.signIn(this.signInForm.value, this.redirectUrl);
+  }
 }
