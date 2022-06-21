@@ -19,7 +19,16 @@ const routes: Routes = [
     loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule),
     canActivate: [AuthGuard]
   },
-
+  {
+    path: 'users',
+    loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'todos',
+    loadChildren: () => import('./modules/todo/todo.module').then(m => m.TodoModule),
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({

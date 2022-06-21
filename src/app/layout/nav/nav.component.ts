@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+    console.log('NavComponent Constructor');
+  }
 
   ngOnInit(): void {
+    console.log('NavComponent OnInit');
   }
 
 }

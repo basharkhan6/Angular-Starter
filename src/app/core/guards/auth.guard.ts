@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree} from '@angular/router';
 import { Observable } from 'rxjs';
-import {AuthService} from '../../modules/auth/services/auth.service';
+import {AuthService} from '../../modules/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
 
-    return this.authService.validateCredentialIfFound().then( valid => {
+    return this.authService.validateCredentialIfFound().then(valid => {
       if (valid) {
         return true;
       } else {

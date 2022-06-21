@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CommonValidators} from '../../../core/validators/common-validators';
-import {AuthService} from '../services/auth.service';
+import {AuthService} from '../auth.service';
 import {ToasterService} from '../../../core/services/toaster.service';
 
 @Component({

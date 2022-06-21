@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {FormGroup} from '@angular/forms';
 import {BehaviorSubject, lastValueFrom, Observable} from 'rxjs';
-import {environment} from '../../../../environments/environment';
+import {environment} from '../../../environments/environment';
 import ls from 'localstorage-slim';
-import {AuthCredential} from '../../../shared/interfaces/auth-credential';
+import {AuthCredential} from '../../shared/interfaces/auth-credential';
 import {Router} from '@angular/router';
 
 
@@ -33,7 +33,7 @@ export class AuthService {
       next: (data) => {
         this.setCredential(data);
         this.updateStatus(data, true);
-        this.router.navigate([redirectUrl || '/'])
+        this.router.navigate([redirectUrl || '/dashboard'])
       },
       error: err => console.log(err)
     });
@@ -59,11 +59,22 @@ export class AuthService {
         this.setCredential(refreshTokenResponse);
         return true;
       } catch (e: any) {
+        this.removeCredential();
         return false;
       }
     }
     return false;
   }
+
+  public forgotPassword(forgotPasswordForm: FormGroup): Observable<any> {
+    return this.http.post(API_URL + '/forget-password/', forgotPasswordForm.getRawValue());
+  }
+
+  public confirmEmail(key: string): Observable<any> {
+    return this.http.get(API_URL + '/email-verification/?key=' + key);
+  }
+
+
 
   private requestForToken(username: string, password: string): Observable<AuthCredential> {
     const formData = new FormData();
@@ -92,16 +103,18 @@ export class AuthService {
   }
 
   private updateStatus(credential: AuthCredential | null, authenticated: boolean): void {
-    if (authenticated && credential) {
+    if (authenticated && credential) {  // sign in
       this.token = credential.access_token;
       this.isAuthenticated = true;
       this.authStatusObserver.next(true);
       this.setAuthTimer(credential.expiration_date);
-    } else {
+    } else {    // sign-out
       this.token = null;
       this.isAuthenticated = false;
       this.authStatusObserver.next(false);
-      this.tokenTimer.clearTimeout();
+      if (this.tokenTimer) {
+        this.tokenTimer.clearTimeout();
+      }
     }
   }
 

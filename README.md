@@ -33,7 +33,8 @@ This will start development server in port **4200**
 *ref: app-routing.module.ts*
 - Custom Form **Validation** with dynamic error message.  
 *ref: core->validations; usages: modules -> auth -> sign-up*
-- Guard
+- **Guard**  
+*ref: core->guards->AuthGuard*
 - Resolver
 - Interceptor
 - Tests
@@ -41,7 +42,8 @@ This will start development server in port **4200**
 #### Other Features
 - Customized ToasterService by using [PrimeNG`s Toast](https://www.primefaces.org/primeng/toast)  
 *ref: app.component.html; core.module.ts(providers); usages: core -> services -> ToasterService*
-
+- Encrypt user data in Local Storage by [localstorage-slim](https://www.npmjs.com/package/localstorage-slim)  
+*ref: modules->auth->AuthService*
 
 ## Architecture
 #### *core:*
@@ -101,7 +103,10 @@ Put below css reference under **styles** in *angular.json*
 ```
 Import `BrowserAnimationsModule` or `NoopAnimationsModule` in AppModule
 
+Install [localstorage-slim](https://www.npmjs.com/package/localstorage-slim)  
+```npm i localstorage-slim```
 
 ## References
 - [For Architecture](https://itnext.io/choosing-a-highly-scalable-folder-structure-in-angular-d987de65ec7)
 - [For App Layout](https://indepth.dev/posts/1235/how-to-reuse-common-layouts-in-angular-using-router-2)
+- [Encrypt Local Data](https://digitalfortress.tech/js/encrypt-localstorage-data/)

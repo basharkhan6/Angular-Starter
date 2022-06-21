@@ -1,1 +1,15 @@
-<p>nav works!</p>
+<header class="text-gray-600 shadow-md">
+  <div class="container mx-auto flex flex-wrap flex-col md:flex-row justify-between p-5">
+    <h2 routerLink="/dashboard" class="cursor-pointer text-gray-900 text-xl ml-0 md:ml-3 p-2 md:p-0">
+      <span class="font-extrabold">Real</span> Acquisitions
+    </h2>
+    <div>
+      <button routerLink="/users/profile" class="bg-gray-200 focus:outline-none hover:bg-gray-300 border-0 rounded text-base py-1 px-3 mr-1">
+        Profile
+      </button>
+      <button routerLink="/auth/sign-out" class="bg-gray-200 focus:outline-none hover:bg-gray-300 border-0 rounded text-base py-1 px-3">
+        Sign out
+      </button>
+    </div>
+  </div>
+</header>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../auth/services/auth.service";
+import {AuthService} from "../../auth/auth.service";
 import {Router} from "@angular/router";
 
 @Component({
@@ -9,11 +9,12 @@ import {Router} from "@angular/router";
 })
 export class IndexComponent implements OnInit {
 
-
-
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {
+    console.log('Dashboard Constructor');
+  }
 
   ngOnInit(): void {
+    console.log('Dashboard OnInit');
   }
 
 }
