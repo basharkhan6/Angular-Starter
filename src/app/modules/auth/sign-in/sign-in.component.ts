@@ -12,7 +12,7 @@ import {ActivatedRoute} from "@angular/router";
 export class SignInComponent implements OnInit {
 
   public signInForm: FormGroup;
-  public redirectUrl: string = '/';
+  public redirectUrl: string | undefined;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private route: ActivatedRoute) {
     this.signInForm = this.buildSignInForm();
@@ -30,6 +30,9 @@ export class SignInComponent implements OnInit {
   }
 
   submitSignInForm(): void {
-    this.authService.signIn(this.signInForm.value, this.redirectUrl);
+    console.log('Submitted signup form')
+    if (this.signInForm.valid) {
+      this.authService.signIn(this.signInForm.value, this.redirectUrl);
+    }
   }
 }

@@ -6,6 +6,7 @@ import {environment} from '../../../environments/environment';
 import ls from 'localstorage-slim';
 import {AuthCredential} from '../../shared/interfaces/auth-credential';
 import {Router} from '@angular/router';
+import {ToasterService} from "../../core/services/toaster.service";
 
 
 const API_URL = environment.apiUrl;
@@ -22,7 +23,9 @@ export class AuthService {
   public authStatusObserver: BehaviorSubject<boolean | null> = new BehaviorSubject<boolean | null>(null);
   private tokenTimer: any;   // Timeout
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient,
+              private router: Router,
+              private toasterService: ToasterService) {}
 
   public signUp(signUpForm: FormGroup): Observable<any> {
     return this.http.post(API_URL + '/users/', signUpForm.getRawValue());
@@ -35,7 +38,7 @@ export class AuthService {
         this.updateStatus(data, true);
         this.router.navigate([redirectUrl || '/dashboard'])
       },
-      error: err => console.log(err)
+      error: () => this.toasterService.error('Invalid Credentials')
     });
   }
 
@@ -52,14 +55,17 @@ export class AuthService {
   public async validateCredentialIfFound(): Promise<boolean> {
     const credential = this.getCredential();
     if (credential && credential.access_token && credential.expiration_date > new Date()) {
+      this.updateStatus(credential, true);
       return true;
     } else if (credential && credential.refresh_token) {
       try {
         const refreshTokenResponse = await this.requestForTokenByRefreshToken(credential.refresh_token);
         this.setCredential(refreshTokenResponse);
+        this.updateStatus(refreshTokenResponse, true);
         return true;
       } catch (e: any) {
         this.removeCredential();
+        this.updateStatus(null, true);
         return false;
       }
     }
