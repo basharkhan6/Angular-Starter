@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
-import {AuthService} from "../auth/auth.service";
 
 
 const API_URL = environment.apiUrl;
@@ -12,9 +11,9 @@ const API_URL = environment.apiUrl;
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient) { }
 
   getProfile(): Observable<any> {
-    return this.http.get(API_URL + '/user-profile/', {headers: {'Authorization': 'Bearer ' + this.authService.token}});
+    return this.http.get(API_URL + '/user-profile/');
   }
 }

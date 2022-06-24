@@ -36,7 +36,8 @@ This will start development server in port **4200**
 - **Guard**  
 *ref: core->guards->AuthGuard*
 - Resolver
-- Interceptor
+- Interceptor  
+*ref: core->interceptors->AuthInterceptor; app.module.ts*
 - Tests
 
 #### Other Features

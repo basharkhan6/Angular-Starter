@@ -30,7 +30,6 @@ export class SignInComponent implements OnInit {
   }
 
   submitSignInForm(): void {
-    console.log('Submitted signup form')
     if (this.signInForm.valid) {
       this.authService.signIn(this.signInForm.value, this.redirectUrl);
     }

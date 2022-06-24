@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from '../user.service';
+import {User} from "../../../shared/interfaces/user";
+import {ToasterService} from "../../../core/services/toaster.service";
 
 @Component({
   selector: 'app-profile',
@@ -8,13 +10,18 @@ import {UserService} from '../user.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private userService: UserService) {
+  public user: User = {} as User;
+
+  constructor(private userService: UserService, private toasterService: ToasterService) {
     console.log('ProfileComponent Constructor');
   }
 
   ngOnInit(): void {
     console.log('ProfileComponent OnInit');
-    this.userService.getProfile().subscribe();
+    this.userService.getProfile().subscribe({
+      next: data => this.user = data,
+      error: () => this.toasterService.error('Error', 'Failed to load user data')
+    });
   }
 
 }
