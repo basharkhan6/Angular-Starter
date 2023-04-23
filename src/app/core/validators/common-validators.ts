@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {AbstractControl, FormControl, ValidationErrors, ValidatorFn} from "@angular/forms";
+import {AbstractControl, UntypedFormControl, ValidationErrors, ValidatorFn} from "@angular/forms";
 import {ValidatorService} from "./validator.service";
 
 @Injectable({
@@ -7,12 +7,12 @@ import {ValidatorService} from "./validator.service";
 })
 export class CommonValidators {
 
-  static email(control: FormControl): ValidationErrors | null {
+  static email(control: UntypedFormControl): ValidationErrors | null {
     const emailRegEx = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     return control.value.match(emailRegEx) ? null : {email: true} ;
   }
 
-  public static onlyAlphanumerics(control: FormControl): ValidationErrors | null {
+  public static onlyAlphanumerics(control: UntypedFormControl): ValidationErrors | null {
     return RegExp('^[a-zA-Z0-9]*$').test(control.value) ? null : {onlyAlphanumerics: true};
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
 import {CommonValidators} from '../../../core/validators/common-validators';
 import {AuthService} from '../auth.service';
 import {ToasterService} from '../../../core/services/toaster.service';
@@ -11,9 +11,9 @@ import {ToasterService} from '../../../core/services/toaster.service';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  public forgotPasswordForm: FormGroup;
+  public forgotPasswordForm: UntypedFormGroup;
 
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
               private authService: AuthService,
               private toasterService: ToasterService) {
     this.forgotPasswordForm = this.fb.group({email: ['', CommonValidators.email]});

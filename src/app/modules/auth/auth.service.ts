@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {FormGroup} from '@angular/forms';
+import {UntypedFormGroup} from '@angular/forms';
 import {BehaviorSubject, lastValueFrom, Observable} from 'rxjs';
 import {environment} from '../../../environments/environment';
 import ls from 'localstorage-slim';
@@ -27,7 +27,7 @@ export class AuthService {
               private router: Router,
               private toasterService: ToasterService) {}
 
-  public signUp(signUpForm: FormGroup): Observable<any> {
+  public signUp(signUpForm: UntypedFormGroup): Observable<any> {
     return this.http.post(API_URL + '/users/', signUpForm.getRawValue());
   }
 
@@ -72,7 +72,7 @@ export class AuthService {
     return false;
   }
 
-  public forgotPassword(forgotPasswordForm: FormGroup): Observable<any> {
+  public forgotPassword(forgotPasswordForm: UntypedFormGroup): Observable<any> {
     return this.http.post(API_URL + '/forget-password/', forgotPasswordForm.getRawValue());
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {CommonValidators} from '../../../core/validators/common-validators';
 import {AuthService} from "../auth.service";
 import {ActivatedRoute} from "@angular/router";
@@ -11,10 +11,10 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class SignInComponent implements OnInit {
 
-  public signInForm: FormGroup;
+  public signInForm: UntypedFormGroup;
   public redirectUrl: string | undefined;
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private route: ActivatedRoute) {
+  constructor(private fb: UntypedFormBuilder, private authService: AuthService, private route: ActivatedRoute) {
     this.signInForm = this.buildSignInForm();
   }
 
@@ -22,7 +22,7 @@ export class SignInComponent implements OnInit {
     this.redirectUrl = this.route.snapshot.queryParams['redirectUrl'];
   }
 
-  private buildSignInForm(): FormGroup {
+  private buildSignInForm(): UntypedFormGroup {
     return this.fb.group({
       username: ['', Validators.required],
       password: ['', CommonValidators.minLength(6)],

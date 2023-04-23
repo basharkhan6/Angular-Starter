@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
 import {CommonValidators} from '../../../core/validators/common-validators';
 import {AuthService} from '../auth.service';
 import {ToasterService} from '../../../core/services/toaster.service';
@@ -11,9 +11,9 @@ import {ToasterService} from '../../../core/services/toaster.service';
 })
 export class SignUpComponent implements OnInit {
 
-  public signUpForm: FormGroup;
+  public signUpForm: UntypedFormGroup;
 
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
               private authService: AuthService,
               private toasterService: ToasterService) {
     this.signUpForm = this.buildSignUpForm();
@@ -30,7 +30,7 @@ export class SignUpComponent implements OnInit {
   }
 
 
-  private buildSignUpForm(): FormGroup {
+  private buildSignUpForm(): UntypedFormGroup {
     const group = this.fb.group({
       username: ['', Validators.required],
       first_name: ['', Validators.required],
