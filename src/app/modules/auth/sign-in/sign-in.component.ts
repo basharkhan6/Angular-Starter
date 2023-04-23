@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup, Validators} from '@angular/forms';
-import {CommonValidators} from '../../../core/validators/common-validators';
-import {AuthService} from "../auth.service";
-import {ActivatedRoute} from "@angular/router";
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { CommonValidators } from '../../../core/validators/common-validators';
+import { AuthService } from '../auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-sign-in',

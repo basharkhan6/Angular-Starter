@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../auth/auth.service";
-import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-index',
@@ -9,7 +7,7 @@ import {Router} from "@angular/router";
 })
 export class IndexComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor() {
     console.log('Dashboard Constructor');
   }
 

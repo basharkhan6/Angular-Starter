@@ -1,6 +1,6 @@
-import {NgModule, Optional, SkipSelf} from '@angular/core';
-import {EnsureModuleLoadedOnceGuard} from './guards/ensure-module-loaded-once-guard';
-import {MessageService} from 'primeng/api';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { EnsureModuleLoadedOnceGuard } from './guards/ensure-module-loaded-once-guard';
+import { MessageService } from 'primeng/api';
 
 
 @NgModule({

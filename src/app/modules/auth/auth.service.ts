@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {UntypedFormGroup} from '@angular/forms';
-import {BehaviorSubject, lastValueFrom, Observable} from 'rxjs';
-import {environment} from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { UntypedFormGroup } from '@angular/forms';
+import { BehaviorSubject, lastValueFrom, Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 import ls from 'localstorage-slim';
-import {AuthCredential} from '../../shared/interfaces/auth-credential';
-import {Router} from '@angular/router';
-import {ToasterService} from "../../core/services/toaster.service";
+import { AuthCredential } from '../../shared/interfaces/auth-credential';
+import { Router } from '@angular/router';
+import { ToasterService } from '../../core/services/toaster.service';
 
 
 const API_URL = environment.apiUrl;

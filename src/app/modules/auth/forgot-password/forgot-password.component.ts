@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {UntypedFormBuilder, UntypedFormGroup} from "@angular/forms";
-import {CommonValidators} from '../../../core/validators/common-validators';
-import {AuthService} from '../auth.service';
-import {ToasterService} from '../../../core/services/toaster.service';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { CommonValidators } from '../../../core/validators/common-validators';
+import { AuthService } from '../auth.service';
+import { ToasterService } from '../../../core/services/toaster.service';
 
 @Component({
   selector: 'app-forgot-password',

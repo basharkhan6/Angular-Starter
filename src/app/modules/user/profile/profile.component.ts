@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../user.service';
-import {User} from "../../../shared/interfaces/user";
-import {ToasterService} from "../../../core/services/toaster.service";
+import { UserService } from '../user.service';
+import { User } from '../../../shared/interfaces/user';
+import { ToasterService } from '../../../core/services/toaster.service';
 
 @Component({
   selector: 'app-profile',

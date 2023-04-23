@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AbstractControl} from "@angular/forms";
-import {ValidatorService} from "../../../core/validators/validator.service";
+import { AbstractControl } from '@angular/forms';
+import { ValidatorService } from '../../../core/validators/validator.service';
 
 @Component({
   selector: 'control-error-message',

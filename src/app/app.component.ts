@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
-import {ToasterService} from './core/services/toaster.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ToasterService } from './core/services/toaster.service';
 
 @Component({
   selector: 'app-root',

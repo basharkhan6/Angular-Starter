@@ -6,7 +6,7 @@ More information and external resources are attached in this **README.md** file.
 
 
 ## Requirements
-- NodeJs v16.15.1 (suggested to use [nvm](https://github.com/nvm-sh/nvm))
+- NodeJs v18.16.0 (suggested to use [nvm](https://github.com/nvm-sh/nvm))
 
 
 ## Setup
@@ -68,7 +68,7 @@ or can organize by role and feature in submodule like,
 All independent and reusable components, service, utilities should place here.
 
 
-## To re create this project
+## To re-create this project
 #### Generate [Angular](https://angular.io/)
 Create new angular project using
 [angular-cli](https://indepthcoder.medium.com/maintain-different-versions-of-angular-cli-on-the-same-machine-6828df198f59)  
